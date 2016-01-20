@@ -23,8 +23,8 @@ def array_to_idx(var, filename, dtype='f4'):
   shape = numpy.array(var.shape, dtype=dt)
   with gzip.open(filename, 'wb') as f:
     f.write(bytes([0, 0, 0xd, len(shape)]))
-    f.write(shape.tobytes())
-    f.write(data.tobytes())
+    f.write(shape.tostring()) # Was tobytes
+    f.write(data.tostring())
 
 def idx_to_array(filename):
   with gzip.open(filename, 'rb') as bytestream:
