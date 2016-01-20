@@ -38,5 +38,5 @@ def idx_to_array(filename):
     buf = bytestream.read(dt.itemsize * ft.reduce(lambda x,y: x*y, shape))
     data = numpy.frombuffer(buf, dtype=dt)
     array = data.tolist()
-    array = numpy.reshape(array, shape)
+    array = numpy.reshape(array, shape).astype(dt)
     return array
